@@ -1,65 +1,64 @@
 :root {
-/* Palette 15 */
+  /* Palette 15 */
 
-/* Primary */
---blue-050: #DCEEFB;
---blue-100: #B6E0FE;
---blue-200: #84C5F4;
---blue-300: #62B0E8;
---blue-400: #4098D7;
---blue-500: #2680C2;
---blue-600: #186FAF;
---blue-700: #0F609B;
---blue-800: #0A558C;
---blue-900: #003E6B;
+  /* Primary */
+  --blue-050: #dceefb;
+  --blue-100: #b6e0fe;
+  --blue-200: #84c5f4;
+  --blue-300: #62b0e8;
+  --blue-400: #4098d7;
+  --blue-500: #2680c2;
+  --blue-600: #186faf;
+  --blue-700: #0f609b;
+  --blue-800: #0a558c;
+  --blue-900: #003e6b;
 
-/* Neutrals */
---blue-grey-050: #F0F4F8;
---blue-grey-100: #D9E2EC;
---blue-grey-200: #BCCCDC;
---blue-grey-300: #9FB3C8;
---blue-grey-400: #829AB1;
---blue-grey-500: #627D98;
---blue-grey-600: #486581;
---blue-grey-700: #334E68;
---blue-grey-800: #243B53;
---blue-grey-900: #102A43;
+  /* Neutrals */
+  --blue-grey-050: #f0f4f8;
+  --blue-grey-100: #d9e2ec;
+  --blue-grey-200: #bcccdc;
+  --blue-grey-300: #9fb3c8;
+  --blue-grey-400: #829ab1;
+  --blue-grey-500: #627d98;
+  --blue-grey-600: #486581;
+  --blue-grey-700: #334e68;
+  --blue-grey-800: #243b53;
+  --blue-grey-900: #102a43;
 
-/* Supporting */
---teal-vivid-050: #F0FCF9;
---teal-vivid-100: #C6F7E9;
---teal-vivid-200: #8EEDD1;
---teal-vivid-300: #5FE3C0;
---teal-vivid-400: #2DCCA7;
---teal-vivid-500: #17B897;
---teal-vivid-600: #079A82;
---teal-vivid-700: #048271;
---teal-vivid-800: #016457;
---teal-vivid-900: #004440;
+  /* Supporting */
+  --teal-vivid-050: #f0fcf9;
+  --teal-vivid-100: #c6f7e9;
+  --teal-vivid-200: #8eedd1;
+  --teal-vivid-300: #5fe3c0;
+  --teal-vivid-400: #2dcca7;
+  --teal-vivid-500: #17b897;
+  --teal-vivid-600: #079a82;
+  --teal-vivid-700: #048271;
+  --teal-vivid-800: #016457;
+  --teal-vivid-900: #004440;
 
---red-050: #FFEEEE;
---red-100: #FACDCD;
---red-200: #F29B9B;
---red-300: #E66A6A;
---red-400: #D64545;
---red-500: #BA2525;
---red-600: #A61B1B;
---red-700: #911111;
---red-800: #780A0A;
---red-900: #610404;
+  --red-050: #ffeeee;
+  --red-100: #facdcd;
+  --red-200: #f29b9b;
+  --red-300: #e66a6a;
+  --red-400: #d64545;
+  --red-500: #ba2525;
+  --red-600: #a61b1b;
+  --red-700: #911111;
+  --red-800: #780a0a;
+  --red-900: #610404;
 
---yellow-050: #FFFAEB;
---yellow-100: #FCEFC7;
---yellow-200: #F8E3A3;
---yellow-300: #F9DA8B;
---yellow-400: #F7D070;
---yellow-500: #E9B949;
---yellow-600: #C99A2E;
---yellow-700: #A27C1A;
---yellow-800: #7C5E10;
---yellow-900: #513C06;
+  --yellow-050: #fffaeb;
+  --yellow-100: #fcefc7;
+  --yellow-200: #f8e3a3;
+  --yellow-300: #f9da8b;
+  --yellow-400: #f7d070;
+  --yellow-500: #e9b949;
+  --yellow-600: #c99a2e;
+  --yellow-700: #a27c1a;
+  --yellow-800: #7c5e10;
+  --yellow-900: #513c06;
 }
-
 
 .App {
   text-align: center;
@@ -94,32 +93,32 @@
 /* Header.css */
 
 .weather-header {
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 .weather-header h1 {
-    margin: 0;
-    font-size: 2.5em;
+  margin: 0;
+  font-size: 2.5em;
 }
 
 .weather-header p {
-    margin: 5px 0;
+  margin: 5px 0;
 }
 
 .cold {
-    color: blue;
+  color: blue;
 }
 
 .warm {
-    color: green;
+  color: green;
 }
 
 .hot {
-    color: red;
+  color: red;
 }
 
 @keyframes App-logo-spin {
@@ -130,3 +129,103 @@
     transform: rotate(360deg);
   }
 }
+
+/* Basic Reset and Typography */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+  background-color: var(--blue-grey-050);
+  color: var(--blue-grey-900);
+}
+
+/* Global Components */
+
+h1,
+h2,
+h3 {
+  margin: 0 0 1rem;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--blue-grey-300);
+  margin: 1rem 0;
+}
+
+/* Header */
+
+.weather-header {
+  background-color: var(--blue-600);
+  color: var(--blue-grey-050);
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 4px solid var(--blue-700);
+  width: 90%;
+  border-radius: 5px;
+}
+
+.weather-header h1 {
+  color: var(--blue-grey-050);
+  margin-bottom: 0.5rem;
+}
+
+/* Error message */
+
+.error {
+  text-align: center;
+  color: var(--red-500);
+  margin: 2rem;
+}
+
+/* ShowWeather */
+
+.showWeather {
+  padding: 2rem;
+  background-color: var(--blue-grey-100);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin: 2rem;
+}
+
+.weather_main {
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.weather_heading {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--blue-grey-900);
+}
+
+.weather_heading span {
+  font-size: 1.2rem;
+  color: var(--blue-grey-700);
+}
+
+.temp {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  color: var(--blue-700);
+}
+
+.weatherData {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.weatherData p {
+  flex: 1;
+  text-align: center;
+  background-color: var(--blue-grey-200);
+  padding: 0.5rem;
+  border-radius: 5px;
+  color: var(--blue-800);
+}
+
+/* The above are just basic styles. You can add transitions, hover effects and other interactive styles based on your design. */
