@@ -18,7 +18,7 @@ const InputCity = ({onCitySubmit}) => {
     // This function is an event handler for the form submission.
     const onSubmitHandler = (e) => {
         e.preventDefault();  // Preventing the default behavior of form submissions, which would reload the page.
-        onCitySubmit(inputCity); // Calls the onCitySubmit function (passed from the parent component) with the current value of inputCity.
+        onCitySubmit(e, inputCity); // Calls the onCitySubmit function (passed from the parent component) with the current value of inputCity.
     };
 
     // JSX returned by the InputCity component when it's rendered.

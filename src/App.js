@@ -1,57 +1,67 @@
+// Import necessary hooks and components
 import React, { useEffect, useState } from "react";
 import InputCity from "./Components/InputCity";
 import Header from "./Components/Header";
-import ShowWeather from "./Components/ShowWeather"
+import ShowWeather from "./Components/ShowWeather";
 import "./App.css";
 
 export default function App() {
-  const [weatherData, setWeatherData] = useState({});
-  const [inputCity, setInputCity] = useState("Seattle");
-  const [cityName, setCityName] = useState("Seattle");
-  const [error, setError] = useState(false);
+  // Define state variables
+  const [weatherData, setWeatherData] = useState({}); // Holds weather data from API
+  const [inputCity, setInputCity] = useState("Richmond"); // Holds the current value in the input
+  const [cityName, setCityName] = useState("Richmond"); // Holds the city name to use for API calls
+  const [error, setError] = useState(false); // A flag to determine if there was an error fetching data
 
-  //  Input element handler
+  // Handler for changes in the city input element
   const inputHandler = (e) => {
     setInputCity(e.target.value);
   };
 
-  //  Search button
-  const submitHandler = (e) => {
-    e.preventDefault();
+  // Handler for the search button/form submission
+  const submitHandler = (city) => {
     setError(false);
     setCityName(inputCity);
   };
 
-  //  Weather API
-  const URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid={{api_key_weather_app}}`;
+  // API key for the OpenWeatherMap API
+  const api_key_weather_app = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
+  console.log(api_key_weather_app);
 
+  // Define the API endpoint URL
+  const URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${api_key_weather_app}`;
 
-  //  Fetching weather data
+  // Function to fetch weather data from the provided URL
   async function fetchData(URL) {
-    const response = await fetch(URL);
+    const response = await fetch(URL); // Get data from the API
     const data = await response.json();
+    console.log(data);
+    // Check for errors in the response
     if (data.cod === "404") {
       setError(true);
       console.log(error);
     } else {
-      setWeatherData(data);
+      setWeatherData(data); // Set the fetched data to state if no error
     }
   }
 
-  //  To fetch weather data
+  // useEffect hook to fetch weather data when the URL (cityName) changes
   useEffect(() => {
     fetchData(URL);
   }, [URL]);
 
+  // JSX to render the application
   return (
     <div>
       <Header />
 
+      {/* Pass necessary props to the InputCity component */}
       <InputCity
         city={inputCity}
         onInputHandler={inputHandler}
-        onSubmitHandler={submitHandler}
+        onCitySubmit={submitHandler}
       />
+
+      {/* Conditionally render error message or the weather data */}
       {error ? (
         <h3 className="error">No data found :( </h3>
       ) : (
