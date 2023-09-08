@@ -1,25 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import InputCity from "./Components/InputCity";
+import Header from "./Components/Header";
+import ShowWeather from "./Components/ShowWeather"
+import "./App.css";
 
-function App() {
+export default function App() {
+  const [weatherData, setWeatherData] = useState({});
+  const [inputCity, setInputCity] = useState("Seattle");
+  const [cityName, setCityName] = useState("Seattle");
+  const [error, setError] = useState(false);
+
+  //  Input element handler
+  const inputHandler = (e) => {
+    setInputCity(e.target.value);
+  };
+
+  //  Search button
+  const submitHandler = (e) => {
+    e.preventDefault();
+    setError(false);
+    setCityName(inputCity);
+  };
+
+  //  Weather API
+  const URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid={{api_key_weather_app}}`;
+
+
+  //  Fetching weather data
+  async function fetchData(URL) {
+    const response = await fetch(URL);
+    const data = await response.json();
+    if (data.cod === "404") {
+      setError(true);
+      console.log(error);
+    } else {
+      setWeatherData(data);
+    }
+  }
+
+  //  To fetch weather data
+  useEffect(() => {
+    fetchData(URL);
+  }, [URL]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+
+      <InputCity
+        city={inputCity}
+        onInputHandler={inputHandler}
+        onSubmitHandler={submitHandler}
+      />
+      {error ? (
+        <h3 className="error">No data found :( </h3>
+      ) : (
+          <ShowWeather data={weatherData} />
+        )}
     </div>
   );
 }
-
-export default App;
