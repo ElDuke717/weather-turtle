@@ -25,7 +25,6 @@ export default function App() {
 
   // API key for the OpenWeatherMap API
   const api_key_weather_app = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
-  console.log(api_key_weather_app);
 
   // Define the API endpoint URL
   const URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${api_key_weather_app}`;
