@@ -37,7 +37,10 @@ const ShowWeather = ({ data }) => {
   }, [tempInCelcius]);
 
   return (
-    <div className="showWeather" style={{ background: dynamicBackground }}>
+    <div
+      className="showWeather standard-width"
+      style={{ background: dynamicBackground }}
+    >
       <header className="weather_header">
         <h1>{city}</h1>
         <h2>{country}</h2>
