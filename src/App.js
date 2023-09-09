@@ -50,7 +50,7 @@ export default function App() {
 
   // JSX to render the application
   return (
-    <div>
+    <div className="field">
       <Header />
 
       {/* Pass necessary props to the InputCity component */}

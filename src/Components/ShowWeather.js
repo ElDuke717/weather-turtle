@@ -37,36 +37,34 @@ const ShowWeather = ({ data }) => {
   }, [tempInCelcius]);
 
   return (
-    <React.Fragment>
-      <div className="showWeather">
-        <div className="weather_main" style={{ background: dynamicBackground }}>
-          <h1 className="weather_heading">
-            {city} <br /> <span> {country}</span>
-          </h1>
-          <h3 className="temp">Temperature in Celcius: {tempInCelcius} C</h3>
-          <h3 className="temp">
-            Temperature in Fahrenheit: {tempInFahrenheit} F
-          </h3>
-          <hr />
-          <div className="weatherData">
-            <p>
-              Pressure <br /> {pressureInAtm} atm{" "}
-            </p>
-            <p>
-              Visibility <br /> {visibilityInKM} Km
-            </p>
-          </div>
-          <div className="weatherData">
-            <p>
-              Humidity: <br /> {humidity}%{" "}
-            </p>
-            <p>
-              Clouds: <br /> {clouds} %{" "}
-            </p>
-          </div>
+    <div className="showWeather" style={{ background: dynamicBackground }}>
+      <header className="weather_header">
+        <h1>{city}</h1>
+        <h2>{country}</h2>
+      </header>
+      <section className="temperature_section">
+        <h3 className="temp_celsius">{tempInCelcius}°C</h3>
+        <h3 className="temp_fahrenheit">{tempInFahrenheit}°F</h3>
+      </section>
+      <section className="weather_data">
+        <div>
+          <h4>Pressure</h4>
+          <p>{pressureInAtm} atm</p>
         </div>
-      </div>
-    </React.Fragment>
+        <div>
+          <h4>Visibility</h4>
+          <p>{visibilityInKM} Km</p>
+        </div>
+        <div>
+          <h4>Humidity</h4>
+          <p>{humidity}%</p>
+        </div>
+        <div>
+          <h4>Clouds</h4>
+          <p>{clouds}%</p>
+        </div>
+      </section>
+    </div>
   );
 };
 
