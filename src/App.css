@@ -109,18 +109,6 @@
   margin: 5px 0;
 }
 
-.cold {
-  color: blue;
-}
-
-.warm {
-  color: green;
-}
-
-.hot {
-  color: red;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -162,12 +150,6 @@ hr {
   justify-content: center;
   align-items: center; /* These two lines center the children */
   background-color: var(--background-color);
-}
-
-.standard-width {
-  width: 90%; /* This will make the component take up 90% of its parent's width */
-  max-width: 300px; /* But it won't exceed 300px, which provides consistency */
-  margin: 0 auto; /* Center the component */
 }
 
 /* Header */
@@ -300,12 +282,6 @@ hr {
   background-color: #0056b3; /* Slightly darker shade for hover */
 }
 
-.inputForm.standard-width {
-  width: 90%;
-  max-width: 300px;
-  margin: 0 auto;
-}
-
 /* Base styling */
 .showWeather {
   display: flex;
@@ -349,12 +325,6 @@ hr {
   margin-bottom: 10px;
   font-size: 18px;
   text-transform: uppercase;
-}
-
-.showWeather.standard-width {
-  width: 90%;
-  max-width: 300px;
-  margin: 0 auto;
 }
 
 /* For smaller screens, consider using media queries to adjust layout or font size */
