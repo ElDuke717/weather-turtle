@@ -16,16 +16,13 @@ const ShowWeather = ({ data }) => {
   // Caluculate local time
   // get UTC time in milliseconds
   const nowUTC = new Date().getTime();
+ console.log(nowUTC)
+  
   // get local timezone offset and convert to milliseconds
   const localOffset = timezoneOffsetSeconds * 1000;
-  // get the local time by passing in the UTC time and the local offset
-  const localTimeRemotely = new Date(nowUTC + localOffset);
-  console.log("local time remotely", localTimeRemotely);
+  // get UTC time in milliseconds
 
-  // get time for local machine
-
-  const machineTime = new Date().toLocaleTimeString();
-  const localTime = machineTime === localTimeRemotely ? machineTime : localTimeRemotely.toLocaleTimeString();
+  const localTime = new Date(nowUTC + localOffset).toUTCString().split(' ')[4]
 
   // Values in standard units
 
