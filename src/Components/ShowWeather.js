@@ -9,6 +9,8 @@ const ShowWeather = ({ data }) => {
   const visibility = data ? data.visibility : null;
   const humidity = data.main ? data.main.humidity : null;
   const clouds = data.clouds ? data.clouds.all : null;
+  const sunrise = data.sys ? data.sys.sunrise : null;
+  const sunset = data.sys ? data.sys.sunset : null;
 
   // Values in standard units
 
@@ -43,11 +45,12 @@ const ShowWeather = ({ data }) => {
     >
       <header className="weather_header">
         <h1>{city}</h1>
-        <h2>{country}</h2>
+        <h2>Country: {country}</h2>
       </header>
       <section className="temperature_section">
-        <h3 className="temp_celsius">{tempInCelcius}°C</h3>
-        <h3 className="temp_fahrenheit">{tempInFahrenheit}°F</h3>
+        <h2>Temperature</h2>
+        <h2 className="temp_celsius">{tempInCelcius}°C</h2> {"/"}
+        <h2 className="temp_fahrenheit">{tempInFahrenheit}°F</h2>
       </section>
       <section className="weather_data">
         <div>
@@ -65,6 +68,15 @@ const ShowWeather = ({ data }) => {
         <div>
           <h4>Clouds</h4>
           <p>{clouds}%</p>
+        </div>
+
+        <div>
+          <h4>Sunrise</h4>
+          <p>{new Date(sunrise * 1000).toLocaleTimeString()}</p>
+        </div>
+        <div>
+          <h4>Sunset</h4>
+          <p>{new Date(sunset * 1000).toLocaleTimeString()}</p>
         </div>
       </section>
     </div>

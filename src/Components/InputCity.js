@@ -24,7 +24,7 @@ const InputCity = ({onCitySubmit}) => {
 
     // JSX returned by the InputCity component when it's rendered.
     return (
-        <div className="inputForm standard-width">
+        <div className="inputForm">
             <form onSubmit={onSubmitHandler}>  {/* When the form is submitted, the onSubmitHandler function will be called. */}
                 <label htmlFor="city">Enter City:</label>  {/* Label for the input field. */}
                 <input
