@@ -11,6 +11,21 @@ const ShowWeather = ({ data }) => {
   const clouds = data.clouds ? data.clouds.all : null;
   const sunrise = data.sys ? data.sys.sunrise : null;
   const sunset = data.sys ? data.sys.sunset : null;
+  const timezoneOffsetSeconds = data.timezone ? data.timezone : null;
+
+  // Caluculate local time
+  // get UTC time in milliseconds
+  const nowUTC = new Date().getTime();
+  // get local timezone offset and convert to milliseconds
+  const localOffset = timezoneOffsetSeconds * 1000;
+  // get the local time by passing in the UTC time and the local offset
+  const localTimeRemotely = new Date(nowUTC + localOffset);
+  console.log("local time remotely", localTimeRemotely);
+
+  // get time for local machine
+
+  const machineTime = new Date().toLocaleTimeString();
+  const localTime = machineTime === localTimeRemotely ? machineTime : localTimeRemotely.toLocaleTimeString();
 
   // Values in standard units
 
@@ -46,6 +61,7 @@ const ShowWeather = ({ data }) => {
       <header className="weather_header">
         <h1>{city}</h1>
         <h2>Country: {country}</h2>
+        <h2>Local Time: {localTime}</h2>
       </header>
       <section className="temperature_section">
         <h2>Temperature</h2>
