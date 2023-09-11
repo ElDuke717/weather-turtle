@@ -5,6 +5,7 @@ const ShowWeather = ({ data }) => {
   const city = data.name;
   const country = data.sys ? data.sys.country : null;
   const temperature = data.main ? data.main.temp : null;
+  const feelsLikeTemp = data.main ? data.main.feels_like : null;
   const pressure = data.main ? data.main.pressure : null;
   const visibility = data ? data.visibility : null;
   const humidity = data.main ? data.main.humidity : null;
@@ -16,19 +17,47 @@ const ShowWeather = ({ data }) => {
   // Caluculate local time
   // get UTC time in milliseconds
   const nowUTC = new Date().getTime();
- console.log(nowUTC)
-  
+  console.log(nowUTC);
+
   // get local timezone offset and convert to milliseconds
   const localOffset = timezoneOffsetSeconds * 1000;
   // get UTC time in milliseconds
 
-  const localTime = new Date(nowUTC + localOffset).toUTCString().split(' ')[4]
+  // Assume nowUTC and localOffset are given in milliseconds
+  const date = new Date(nowUTC + localOffset);
+
+  // Extract time components
+  let hours = date.getUTCHours();
+  let minutes = date.getUTCMinutes();
+
+  // Determine AM or PM
+  let period = "AM";
+  if (hours >= 12) {
+    period = "PM";
+  }
+
+  // Convert to 12-hour format
+  if (hours === 0) {
+    hours = 12;
+  } else if (hours > 12) {
+    hours -= 12;
+  }
+
+  // Pad minutes and seconds with a zero if they are single digits
+  minutes = minutes < 10 ? `0${minutes}` : minutes;
+
+  // Construct the 12-hour time string
+  const time12hr = `${hours}:${minutes}${period}`;
+
+  console.log(time12hr); // This will output the time in 12-hour format with AM/PM
 
   // Values in standard units
 
   const pressureInAtm = (pressure / 1000).toFixed(2);
-  const tempInCelcius = (temperature / 10).toFixed(2);
-  const tempInFahrenheit = ((tempInCelcius * 9) / 5 + 32).toFixed(2);
+  const tempInCelcius = (temperature - 273.15).toFixed(0);
+  const tempInFahrenheit = ((tempInCelcius * 9) / 5 + 32).toFixed(0);
+  const feelsLikeTempC = (feelsLikeTemp - 273.15).toFixed(0);
+  const feelsLiketempInF = ((tempInCelcius * 9) / 5 + 32).toFixed(0);
   const visibilityInKM = (visibility / 1000).toFixed(2);
 
   // Change border dynamically
@@ -58,12 +87,15 @@ const ShowWeather = ({ data }) => {
       <header className="weather_header">
         <h1>{city}</h1>
         <h2>Country: {country}</h2>
-        <h2>Local Time: {localTime}</h2>
+        <h2>Local Time: {time12hr}</h2>
       </header>
       <section className="temperature_section">
         <h2>Temperature</h2>
         <h2 className="temp_celsius">{tempInCelcius}°C</h2> {"/"}
         <h2 className="temp_fahrenheit">{tempInFahrenheit}°F</h2>
+        <h2>Feels Like</h2>
+        <h2 className="temp_celsius">{feelsLikeTempC}°C</h2> {"/"}
+        <h2 className="temp_fahrenheit">{feelsLiketempInF}°F</h2>
       </section>
       <section className="weather_data">
         <div>
