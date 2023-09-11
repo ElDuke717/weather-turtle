@@ -4,7 +4,8 @@ const ShowWeather = ({ data }) => {
   const [dynamicBackground, setDynamicBackground] = useState("");
   const city = data.name;
   const country = data.sys ? data.sys.country : null;
-  const weather = data.weather ? data.weather[0].main : null;
+  const weather = data.weather ? data.weather[0].description : null;
+  const weatherIcon = data.weather ? data.weather[0].icon : null;
   const temperature = data.main ? data.main.temp : null;
   const feelsLikeTemp = data.main ? data.main.feels_like : null;
   const pressure = data.main ? data.main.pressure : null;
@@ -61,17 +62,19 @@ const ShowWeather = ({ data }) => {
   const feelsLiketempInF = ((tempInCelcius * 9) / 5 + 32).toFixed(0);
   const visibilityInKM = (visibility / 1000).toFixed(2);
 
+ // Add weather icon
+
+
   // Change border dynamically
   const dynamicBackgroundColor = (temp) => {
     if (temp < 10) {
-      setDynamicBackground("#bbeafa");
+      setDynamicBackground("blue-gradient");
     }
     if (temp > 10 && temp <= 30) {
-      setDynamicBackground("#fcfa5b");
+      setDynamicBackground("yellow-gradient");
     }
-
     if (temp > 30) {
-      setDynamicBackground(" #ff512f");
+      setDynamicBackground("red-gradient");
     }
   };
 
@@ -88,13 +91,16 @@ const ShowWeather = ({ data }) => {
         <hr />
         <h2>{weather}</h2>
         {/* <h4>Country: {country}</h4> */}
-        
+        <img src={`/icons/${weatherIcon}.png`} alt="weather-icon" />
       </header>
       <section className="temperature_section">
         <div className="actual-temp break-after">
             <h2>Temperature</h2>
             <h2 className="temp_celsius">{tempInCelcius}°C</h2> {"/"}
             <h2 className="temp_fahrenheit">{tempInFahrenheit}°F</h2>
+        </div>
+        <div className="description"> 
+         <h3></h3>
         </div>
    
         <div className="feels-temp">
