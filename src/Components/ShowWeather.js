@@ -4,6 +4,7 @@ const ShowWeather = ({ data }) => {
   const [dynamicBackground, setDynamicBackground] = useState("");
   const city = data.name;
   const country = data.sys ? data.sys.country : null;
+  const weather = data.weather ? data.weather[0].main : null;
   const temperature = data.main ? data.main.temp : null;
   const feelsLikeTemp = data.main ? data.main.feels_like : null;
   const pressure = data.main ? data.main.pressure : null;
@@ -47,7 +48,7 @@ const ShowWeather = ({ data }) => {
   minutes = minutes < 10 ? `0${minutes}` : minutes;
 
   // Construct the 12-hour time string
-  const time12hr = `${hours}:${minutes}${period}`;
+  const time12hr = `${hours}:${minutes} ${period}`;
 
   console.log(time12hr); // This will output the time in 12-hour format with AM/PM
 
@@ -80,22 +81,27 @@ const ShowWeather = ({ data }) => {
   }, [tempInCelcius]);
 
   return (
-    <div
-      className="showWeather standard-width"
-      style={{ background: dynamicBackground }}
-    >
+    <div className="showWeather" style={{ background: dynamicBackground }}>
       <header className="weather_header">
         <h1>{city}</h1>
-        <h2>Country: {country}</h2>
-        <h2>Local Time: {time12hr}</h2>
+        <h4>Local Time: {time12hr}</h4>
+        <hr />
+        <h2>{weather}</h2>
+        {/* <h4>Country: {country}</h4> */}
+        
       </header>
       <section className="temperature_section">
-        <h2>Temperature</h2>
-        <h2 className="temp_celsius">{tempInCelcius}°C</h2> {"/"}
-        <h2 className="temp_fahrenheit">{tempInFahrenheit}°F</h2>
-        <h2>Feels Like</h2>
-        <h2 className="temp_celsius">{feelsLikeTempC}°C</h2> {"/"}
-        <h2 className="temp_fahrenheit">{feelsLiketempInF}°F</h2>
+        <div className="actual-temp break-after">
+            <h2>Temperature</h2>
+            <h2 className="temp_celsius">{tempInCelcius}°C</h2> {"/"}
+            <h2 className="temp_fahrenheit">{tempInFahrenheit}°F</h2>
+        </div>
+   
+        <div className="feels-temp">
+            <h3>Feels Like</h3>
+            <h4 className="temp_celsius">{feelsLikeTempC}°C</h4> {"/"}
+            <h4 className="temp_fahrenheit">{feelsLiketempInF}°F</h4>
+        </div>
       </section>
       <section className="weather_data">
         <div>
@@ -117,11 +123,11 @@ const ShowWeather = ({ data }) => {
 
         <div>
           <h4>Sunrise</h4>
-          <p>{new Date(sunrise * 1000).toLocaleTimeString()}</p>
+          <p>{new Date(sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
         </div>
         <div>
           <h4>Sunset</h4>
-          <p>{new Date(sunset * 1000).toLocaleTimeString()}</p>
+          <p>{new Date(sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
         </div>
       </section>
     </div>

@@ -2,7 +2,7 @@ import React from "react";
 
 const Header = () => {
   return (
-    <header className="weather-header standard-width">
+    <header className="weather-header">
       <div className="weatherData">
         <img
           className="header-logo"
