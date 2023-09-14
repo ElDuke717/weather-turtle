@@ -73,7 +73,9 @@ export default function App() {
 
       {/* Conditionally render error message or the weather data */}
       {error ? (
-        <h3 className="error">No data found :( </h3>
+        <div className="no-data">
+          <p>No Weather Data for that location</p>
+        </div>
       ) : (
         <ShowWeather data={weatherData} />
       )}

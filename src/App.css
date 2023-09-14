@@ -63,51 +63,52 @@
 /* Gradients */
 
 .red-gradient {
-  background: linear-gradient(to right, 
-    var(--red-050), 
-    var(--red-100), 
-    var(--red-200), 
-    var(--red-300), 
-    var(--red-400), 
-    var(--red-500), 
-    var(--red-600), 
-    var(--red-700), 
-    var(--red-800), 
+  background: linear-gradient(
+    to right,
+    var(--red-050),
+    var(--red-100),
+    var(--red-200),
+    var(--red-300),
+    var(--red-400),
+    var(--red-500),
+    var(--red-600),
+    var(--red-700),
+    var(--red-800),
     var(--red-900)
   );
 }
 
 .yellow-gradient {
-  background: linear-gradient(to right, 
-    var(--yellow-050), 
-    var(--yellow-100), 
-    var(--yellow-200), 
-    var(--yellow-300), 
-    var(--yellow-400), 
-    var(--yellow-500), 
-    var(--yellow-600), 
-    var(--yellow-700), 
-    var(--yellow-800), 
+  background: linear-gradient(
+    to right,
+    var(--yellow-050),
+    var(--yellow-100),
+    var(--yellow-200),
+    var(--yellow-300),
+    var(--yellow-400),
+    var(--yellow-500),
+    var(--yellow-600),
+    var(--yellow-700),
+    var(--yellow-800),
     var(--yellow-900)
   );
 }
 
 .blue-gradient {
-  background: linear-gradient(to right, 
-    var(--blue-050), 
-    var(--blue-100), 
-    var(--blue-200), 
-    var(--blue-300), 
-    var(--blue-400), 
-    var(--blue-500), 
-    var(--blue-600), 
-    var(--blue-700), 
-    var(--blue-800), 
+  background: linear-gradient(
+    to right,
+    var(--blue-050),
+    var(--blue-100),
+    var(--blue-200),
+    var(--blue-300),
+    var(--blue-400),
+    var(--blue-500),
+    var(--blue-600),
+    var(--blue-700),
+    var(--blue-800),
     var(--blue-900)
   );
 }
-
-
 
 .App {
   text-align: center;
@@ -376,6 +377,16 @@ hr {
   text-align: center;
   margin-bottom: 10px; /* Add some bottom margin to separate from the next element */
 }
+
+.no-data {
+  text-align: center;
+  color: var(--red-050);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background: var(--red-500);
+}
+
 /* Media queries */
 
 /* Add these at the bottom of your existing CSS */
